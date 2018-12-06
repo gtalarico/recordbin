@@ -103,9 +103,10 @@
         }
         myConnector.init = function(initCallback) {
 
+          // TODO: See how connectionData might help V
+          // https://github.com/Diggernaut/diggernaut-wdc/blob/master/diggernautWDC.js#L163
           // tableau.abortForAuth("Incorrect token: " + tableau.password)
-          // if (!tableau.password) {
-          // }
+
 
           document.getElementById("tableau-not-init").classList.add("hide")
 
@@ -113,7 +114,7 @@
           tableau.log("Phase is: " + tableau.phase)
           console.log("Phase is: " + tableau.phase)
 
-          if (tableau.phase == tableau.phaseEnum.authPhase) {
+          if ((tableau.phase == tableau.phaseEnum.authPhase) || !tableau.password) {
             // It's in auth phase - hide get data button / show token auth form
             document.getElementById("fetch-form").classList.add("hide")
             document.getElementById("token-form").classList.remove("hide")
